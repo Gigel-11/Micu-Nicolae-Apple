@@ -184,3 +184,9 @@ document.addEventListener('DOMContentLoaded', function () {
 		}
 	});
 });
+
+const buton1 = document.getElementById('buton');
+
+buton1.addEventListener('click', function() {
+	console.log('Butonul a fost apasat');
+});
