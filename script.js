@@ -70,7 +70,11 @@ function buildPage() {
 document.addEventListener('DOMContentLoaded', function () {
 	buildPage();
 
-	// log input value as a “suggestie” when user clicks the hero button
+	// Încarcă ultima căutare din localStorage
+	const lastSearch = localStorage.getItem('lastProductSearch');
+	if (lastSearch) {
+		document.getElementById('productSearch').value = lastSearch;
+	}
 	const inputEl = document.getElementById('heroInput');
 	const buttonEl = document.getElementById('heroButton');
 	if (buttonEl && inputEl) {
@@ -86,6 +90,8 @@ document.addEventListener('DOMContentLoaded', function () {
 	if (prodBtn && prodInput) {
 		prodBtn.addEventListener('click', () => {
 			const q = prodInput.value.trim().toLowerCase();
+			// Salvează căutarea în localStorage
+			localStorage.setItem('Ultimul produs căutat', q);
 			const cards = Array.from(document.querySelectorAll('.card'));
 			let matchCount = 0;
 			cards.forEach(card => {
